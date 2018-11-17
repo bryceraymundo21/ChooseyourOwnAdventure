@@ -27,10 +27,21 @@ class Game:
         self.running = True
         self.roomNumber = 0
         self.options = "start"
-        self.comicSans = pg.font.SysFont('comicsans', 300)
-        self.middleBox = "hi"
-        self.leftBox = ""
-        self.rightBox = ""
+        self.comicSans = pg.font.SysFont('comicsans', 30)
+        self.leftBoxL1 = "first Line"
+        self.leftBoxL2 = "second Line"
+        self.leftBoxL3 = "third Line"
+        self.leftBoxL4 = "fourth Line"
+
+        self.middleBoxL1 = "first Line"
+        self.middleBoxL2 = "second Line"
+        self.middleBoxL3 = "third Line"
+        self.middleBoxL4 = "fourth Line"
+
+        self.rightBoxL1 = "first Line"
+        self.rightBoxL2 = "second Line"
+        self.rightBoxL3 = "third Line"
+        self.rightBoxL4 = "fourth Line"
     def new(self):
         
         #add all sprites to the group
@@ -40,10 +51,11 @@ class Game:
         self.rightChoice = RightChoice()
         self.all_sprites.add(self.middleChoice,self.leftChoice,self.rightChoice)
         
-        #gets the size of the middle choice sprite
+        #gets the size of the text boxes
         self.middleRect = self.middleChoice.rect
         self.rightRect = self.rightChoice.rect
         self.leftRect = self.leftChoice.rect
+
         #call the run method
         self.run()
     def run(self):
@@ -96,14 +108,38 @@ class Game:
                         print('clicked on right box')
                     if self.leftRect.collidepoint(x,y):
                         print('clicked on left box')
-    #draw fills the canvas with black
+    def addText(self):
+
+        #puts the adding of text into one function
+        middleTextL1 = self.comicSans.render(self.middleBoxL1, 1, BLACK)
+        middleTextL2 = self.comicSans.render(self.middleBoxL2, 1, BLACK)
+        middleTextL3 = self.comicSans.render(self.middleBoxL3, 1, BLACK)
+
+        leftTextL1 = self.comicSans.render(self.leftBoxL1, 1, BLACK)
+        leftTextL2 = self.comicSans.render(self.leftBoxL2, 1, BLACK)
+        leftTextL3 = self.comicSans.render(self.leftBoxL3, 1, BLACK)
+
+        rightTextL1 = self.comicSans.render(self.rightBoxL1, 1, BLACK)
+        rightTextL2 = self.comicSans.render(self.rightBoxL2, 1, BLACK)
+        rightTextL3 = self.comicSans.render(self.rightBoxL3, 1, BLACK)
+
+        self.screen.blit(leftTextL1, (self.leftRect.left+10, self.leftRect.top+10))
+        self.screen.blit(leftTextL2, (self.leftRect.left+10, self.leftRect.top+30))
+        self.screen.blit(leftTextL3, (self.leftRect.left+10, self.leftRect.top+50))
+
+        self.screen.blit(middleTextL1, (self.middleRect.left+10, self.middleRect.top+10))
+        self.screen.blit(middleTextL2, (self.middleRect.left+10, self.middleRect.top+30))
+        self.screen.blit(middleTextL3, (self.middleRect.left+10, self.middleRect.top+50))
+
+        self.screen.blit(rightTextL1, (self.rightRect.left+10, self.rightRect.top+10))
+        self.screen.blit(rightTextL2, (self.rightRect.left+10, self.rightRect.top+30))
+        self.screen.blit(rightTextL3, (self.rightRect.left+10, self.rightRect.top+50))
+
+
     def draw(self):
-        # self.screen.fill(BLACK)
         self.all_sprites.draw(self.screen)
-        
         #apply text to the screen
-        middleText = self.comicSans.render(self.middleBox, 1, WHITE)
-        self.screen.blit(middleText, (self.leftChoice.rect.left, self.leftChoice.rect.top))
+        self.addText()
         pg.display.flip()
     def show_start_screen(self):
         pass
