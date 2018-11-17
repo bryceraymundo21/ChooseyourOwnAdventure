@@ -49,7 +49,8 @@ class Game:
         self.middleChoice = MiddleChoice()
         self.leftChoice = LeftChoice()
         self.rightChoice = RightChoice()
-        self.all_sprites.add(self.middleChoice,self.leftChoice,self.rightChoice)
+        self.mainStory = MainStory()
+        self.all_sprites.add(self.middleChoice,self.leftChoice,self.rightChoice,self.mainStory)
         
         #gets the size of the text boxes
         self.middleRect = self.middleChoice.rect
@@ -109,7 +110,6 @@ class Game:
                     if self.leftRect.collidepoint(x,y):
                         print('clicked on left box')
     def addText(self):
-
         #puts the adding of text into one function
         middleTextL1 = self.comicSans.render(self.middleBoxL1, 1, BLACK)
         middleTextL2 = self.comicSans.render(self.middleBoxL2, 1, BLACK)
