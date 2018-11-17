@@ -9,7 +9,7 @@ class MainStory(Sprite):
    def __init__(self):
         Sprite.__init__(self)
         Sprite.__init__(self)
-        self.image = pg.Surface((600,350))
+        self.image = pg.Surface((600,360))
         self.image.fill(WHITE)
         self.rect = self.image.get_rect()
         self.rect.x = WIDTH/3.7
