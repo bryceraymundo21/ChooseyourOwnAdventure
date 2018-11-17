@@ -136,6 +136,7 @@ class Game:
         self.screen.blit(rightTextL3, (self.rightRect.left+10, self.rightRect.top+50))
 
 
+
     def draw(self):
         self.all_sprites.draw(self.screen)
         #apply text to the screen
